@@ -17,6 +17,17 @@ constexpr uint32 SPELL_BLESSING_OF_PROTECTION = 41450;
 constexpr uint32 SPELL_COMMANDING_PRESENCE_RANKS[] = { 12318, 12857, 12858, 12860, 12861 };
 }
 
+bool SunderArmorDebuffTrigger::IsActive()
+{
+    Unit* target = GetTarget();
+    if (!target || !target->IsAlive() || !target->IsInWorld() ||
+        !(target->GetHealth() / AI_VALUE(float, "estimated group dps") >= needLifeTime))
+        return false;
+
+    Aura* aura = botAI->GetAura("sunder armor", target, false, true);
+    return !aura || aura->GetStackAmount() < 5 || aura->GetDuration() <= 6000;
+}
+
 bool BloodrageBuffTrigger::IsActive()
 {
     return AI_VALUE2(uint8, "health", "self target") >= sPlayerbotAIConfig.MediumHealth &&

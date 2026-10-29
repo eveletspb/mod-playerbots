@@ -177,7 +177,7 @@ void TankWarriorStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
         new TriggerNode(
             "sunder armor",
             {
-                NextAction("devastate", ACTION_HIGH + 2)
+                NextAction("devastate", ACTION_HIGH + 4)
             }
         )
     );

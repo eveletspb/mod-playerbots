@@ -23,7 +23,12 @@ BUFF_TRIGGER(BerserkerStanceTrigger, "berserker stance");
 BUFF_TRIGGER(ShieldBlockTrigger, "shield block");
 BUFF_TRIGGER(CommandingShoutTrigger, "commanding shout");
 DEBUFF_TRIGGER(DisarmDebuffTrigger, "disarm");
-DEBUFF_TRIGGER(SunderArmorDebuffTrigger, "sunder armor");
+class SunderArmorDebuffTrigger : public DebuffTrigger
+{
+public:
+    SunderArmorDebuffTrigger(PlayerbotAI* botAI) : DebuffTrigger(botAI, "sunder armor") {}
+    bool IsActive() override;
+};
 DEBUFF_TRIGGER(MortalStrikeDebuffTrigger, "mortal strike");
 // DEBUFF_ENEMY_TRIGGER(RendDebuffOnAttackerTrigger, "rend");
 
