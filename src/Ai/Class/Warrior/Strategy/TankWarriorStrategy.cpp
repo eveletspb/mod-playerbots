@@ -161,7 +161,7 @@ void TankWarriorStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
         new TriggerNode(
             "commanding shout",
             {
-                NextAction("commanding shout", ACTION_HIGH + 8)
+                NextAction("commanding shout", ACTION_NORMAL)
             }
         )
     );

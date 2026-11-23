@@ -18,6 +18,12 @@ constexpr uint32 SPELL_VIGILANCE = 50720;
 constexpr uint32 SPELL_SHATTERING_THROW = 64382;
 }
 
+bool CastBattleShoutAction::isUseful()
+{
+    // The Commanding Shout fallback skips the Battle Shout trigger.
+    return CastSpellAction::isUseful() && context->GetTrigger("battle shout")->IsActive();
+}
+
 bool CastBerserkerRageAction::isPossible()
 {
     if (botAI->IsInVehicle() && !botAI->IsInVehicle(false, false, true))

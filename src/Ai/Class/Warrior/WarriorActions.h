@@ -19,7 +19,13 @@ BUFF_ACTION(CastDefensiveStanceAction, "defensive stance");
 BUFF_ACTION(CastBerserkerStanceAction, "berserker stance");
 
 // shouts
-BUFF_ACTION(CastBattleShoutAction, "battle shout");
+class CastBattleShoutAction : public CastBuffSpellAction
+{
+public:
+    CastBattleShoutAction(PlayerbotAI* botAI) : CastBuffSpellAction(botAI, "battle shout") {}
+    bool isUseful() override;
+};
+
 MELEE_ACTION_U(CastBattleShoutTauntAction, "battle shout", CastSpellAction::isUseful());  // useful to rebuff
 // DEBUFF_ACTION_R(CastDemoralizingShoutAction, "demoralizing shout", 8.0f);                 // low range debuff
 
