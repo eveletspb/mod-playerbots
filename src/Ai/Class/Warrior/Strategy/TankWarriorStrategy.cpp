@@ -161,7 +161,8 @@ void TankWarriorStrategy::InitTriggers(std::vector<TriggerNode*>& triggers)
         new TriggerNode(
             "commanding shout",
             {
-                NextAction("commanding shout", ACTION_NORMAL)
+                // Keep both shouts below Sunder maintenance and above routine rage spenders.
+                NextAction("commanding shout", ACTION_HIGH + 3)
             }
         )
     );
